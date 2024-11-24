@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoyArk For VR!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content animate">
+        <h1>Download JoyArk!</h1>
+        
+        <!-- First button (white-blue), which redirects to a website and unlocks the second button -->
+        <button class="btn animate" id="mainBtn" onclick="handleMainButtonClick()">Subscribe</button>
+        
+        <!-- Second button (to download APK), initially disabled -->
+        <button class="btn animate" id="downloadBtn" onclick="downloadAPK()" disabled>Download</button>
+        
+        <!-- Additional text with link -->
+        <p class="additional-text animate">
+            Don't have or can't find Mobile VR Station? 
+            <a href="https://www.meta.com/pl-pl/experiences/mobile-vr-station/3887008398005125/?utm_source=oculus&utm_medium=share" class="link" target="_blank">Click Here!</a>
+        </p>
+    </div>
+
+    <!-- Footer section at the bottom of the page -->
+    <footer class="animate">
+        <p class="footer-text">Website Made by RedFlip. Background Image by User GorillaTag From Reddit</p>
+    </footer>
+
+    <script>
+        // Function handling the click on the first button
+        function handleMainButtonClick() {
+            // Redirecting to a website after clicking
+            window.location.href = 'https://www.youtube.com/channel/UCu-YY-asnv4vg-Djs5bZhWg?sub_confirmation=1'; 
+            
+            // Unlock the second button after 15 seconds
+            setTimeout(function() {
+                document.getElementById('downloadBtn').disabled = false;
+            }, 15000); // 15000 ms = 15 seconds
+        }
+
+        // Function to download the APK file
+        function downloadAPK() {
+            // Initiating the download of the APK file
+            window.location.href = 'JoyArk.apk'; // Set the correct path to the APK file
+        }
+
+        // Smoothly animate elements on page load
+        window.onload = function () {
+            const animatedElements = document.querySelectorAll('.animate');
+            
+            // Add the 'visible' class to start the animation
+            animatedElements.forEach(element => {
+                element.classList.add('visible');
+            });
+
+            // Remove animation classes after 2 seconds
+            setTimeout(() => {
+                animatedElements.forEach(element => {
+                    element.classList.remove('animate', 'visible');
+                });
+            }, 2000); // Match the animation duration in CSS
+        };
+    </script>
+</body>
+</html>
